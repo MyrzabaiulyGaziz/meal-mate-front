@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mealmate/screens/navigation_app.dart';
+import 'package:mealmate/screens/navigation_bottom_bar.dart';
 
 import 'core/app_export.dart';
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'mealmate',
       debugShowCheckedModeBanner: false,
       routes: AppRoutes.routes,
-      home: const NavigationApp(),
+      home: NavigationBottomBar(),
     );
   }
 }

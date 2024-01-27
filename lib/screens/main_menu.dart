@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mealmate/routes/app_routes.dart';
 import 'package:mealmate/widgets/carousels/diet_carousel.dart';
 import 'package:mealmate/widgets/carousels/dishes_carousel.dart';
 
@@ -84,33 +85,28 @@ class MainMenu extends StatelessWidget {
                 ),
               ),
               Container(
+                height: 170,
+                width: double.infinity,
                 child: Stack(
                   children: [
                     Positioned(
                       top: 10,
-                      left: 35,
+                      left: 20,
                       child: Container(
                         padding: EdgeInsets.only(
                           top: 10,
                           left: 33.5,
-                        ),
-                        height: 150,
-                        width: 325,
+                        ),height: 150,width: 350,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage(
-                                'https://plus.unsplash.com/premium_photo-1705883267788-4040699634c4?q=80&w=2037&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+                            image: AssetImage(
+                                'assets/images/student_main_menu.png'),
                           ),
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                    ),
+                    )
                   ],
                 ),
-                height: 170,
-                width: double.infinity,
-                decoration: BoxDecoration(color: Colors.red),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,11 +123,17 @@ class MainMenu extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(right: 40),
-                    child: Text('View more',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                        )),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed(AppRoutes.popularDietsPage);
+                      },
+                      child: Text('View more',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          )),
+                    ),
                   ),
                 ],
               ),
@@ -156,11 +158,17 @@ class MainMenu extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(right: 40),
-                    child: Text('View more',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                        )),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed(AppRoutes.popularMealsPage);
+                      },
+                      child: Text('View more',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          )),
+                    ),
                   ),
                 ],
               ),

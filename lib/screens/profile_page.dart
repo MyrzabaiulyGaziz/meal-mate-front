@@ -5,6 +5,6 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Container(decoration: BoxDecoration(color: Colors.green),);
   }
 }
