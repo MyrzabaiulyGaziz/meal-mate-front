@@ -96,15 +96,36 @@ class MainMenu extends StatelessWidget {
                         padding: EdgeInsets.only(
                           top: 10,
                           left: 33.5,
-                        ),height: 150,width: 350,
+                        ),
+                        height: 150,
+                        width: 350,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage(
-                                'assets/images/student_main_menu.png'),
+                                'assets/images/main_menu_student.png'),
                           ),
                         ),
                       ),
-                    )
+                    ),
+                    Positioned(
+                        top: 90,
+                        right: 84,
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: 102,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Text(
+                            'Explore now',
+                            style: TextStyle(
+                              color: Color(0xff34D381),
+                              fontSize: 15,
+                            ),
+                          ),
+                        )),
                   ],
                 ),
               ),
