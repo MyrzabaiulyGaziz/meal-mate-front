@@ -5,12 +5,12 @@ import 'package:mealmate/screens/login_register/sign_in_screen.dart';
 import 'package:mealmate/screens/login_register/sign_up_screen.dart';
 import 'package:mealmate/screens/login_register/sign_up_success_screen.dart';
 import 'package:mealmate/screens/login_register/upload_photo_screen.dart';
-import 'package:mealmate/screens/login_register/upload_preview_screen.dart';
 import 'package:mealmate/screens/login_register/verification_code_screen.dart';
 import 'package:mealmate/screens/login_register/verify_email_screen.dart';
 import 'package:mealmate/screens/main_menu.dart';
 import 'package:mealmate/screens/meal_page.dart';
 import 'package:mealmate/screens/meal_tracking/meal_tracking_page.dart';
+import 'package:mealmate/screens/navigation_bottom_bar.dart';
 import 'package:mealmate/screens/onboarding_screens/onboarding_first_screen.dart';
 import 'package:mealmate/screens/onboarding_screens/onboarding_second_screen.dart';
 import 'package:mealmate/screens/onboarding_screens/splash_screen.dart';
@@ -32,8 +32,6 @@ class AppRoutes {
 
   static const String uploadPhotoScreen = '/upload_photo_screen';
 
-  static const String uploadPreviewScreen = '/upload_preview_screen';
-
   static const String signUpSuccessScreen = '/sign_up_success_screen';
 
   static const String verificationCodeScreen = '/verification_code_screen';
@@ -52,6 +50,8 @@ class AppRoutes {
 
   static const String popularMealsPage = '/popular_meals_page';
 
+  static const String navigationBottomBar = '/navigation_bottom_bar';
+
   static Map<String, WidgetBuilder> routes = {
     splashScreen: (context) => SplashScreen(),
     signInScreen: (context) => SignInScreen(),
@@ -60,7 +60,6 @@ class AppRoutes {
     signUpScreen: (context) => SignUpScreen(),
     bioPageScreen: (context) => BioPageScreen(),
     uploadPhotoScreen: (context) => UploadPhotoScreen(),
-    uploadPreviewScreen: (context) => UploadPreviewScreen(),
     signUpSuccessScreen: (context) => SignUpSuccessScreen(),
     verificationCodeScreen: (context) => VerificationCodeScreen(),
     verifyEmailScreen: (context) => VerifyEmailScreen(),
@@ -70,5 +69,6 @@ class AppRoutes {
     mealTrackingPage: (context) => MealTrackingPage(),
     popularDietsPage: (context) => PopularDietsPage(),
     popularMealsPage: (context) => PopularMealsPage(),
+    navigationBottomBar: (context) => NavigationBottomBar(),
   };
 }

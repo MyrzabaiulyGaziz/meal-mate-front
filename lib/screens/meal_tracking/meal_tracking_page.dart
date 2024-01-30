@@ -31,6 +31,15 @@ class MealTrackingPage extends StatelessWidget {
                 ),
               ),
             ),
+            Positioned(
+              top: 100,
+              child: Column(
+                children: [
+                  TextField(style: TextStyle()),
+                  TextField(),
+                ],
+              ),
+            )
           ],
         ),
       ),

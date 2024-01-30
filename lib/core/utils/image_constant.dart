@@ -93,6 +93,8 @@ class ImageConstant {
   static String imgIconEmail = '$imagePath/img_icon_email.png';
 
   // Common images
+  static String imgVegan = '$imagePath/vegan_diet.png';
+
   static String img399844149441 = '$imagePath/img_39984414944_1.png';
 
   static String imgGroup957 = '$imagePath/img_group_957.svg';

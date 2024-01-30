@@ -57,41 +57,20 @@ class _DailyIntakeState extends State<DailyIntake>
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.minimize),
+                  ),
                   Image.asset(
-                    'assets/images/empty_glass.png',
+                    'assets/images/empty_bottle.png',
                     width: 150,
                     height: 150,
                   ),
-                  Image.asset(
-                    'assets/images/full_glass.png',
-                    width: 150,
-                    height: 150,
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.add),
                   ),
                 ],
-              ),
-              Container(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.minimize),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.add),
-                        ),
-                      ],
-                    ),
-                    LinearProgressIndicator(
-                      value: controller.value,
-                      color: Colors.blue,
-                      minHeight: 20,
-                    )
-                  ],
-                ),
               ),
               SizedBox(height: 20),
               Text(
