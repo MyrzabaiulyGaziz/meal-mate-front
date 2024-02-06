@@ -34,7 +34,7 @@ class OnboardingFirstScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pushNamedAndRemoveUntil(
                   AppRoutes.onboardingSecondScreen,
-                  (route) => false,
+                  (_) => false,
                 );
               },
               child: Text('Next'),

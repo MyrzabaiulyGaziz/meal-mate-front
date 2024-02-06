@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mealmate/routes/app_routes.dart';
+import 'package:mealmate/services/http_service.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -9,6 +11,37 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  late final TextEditingController email;
+  late final TextEditingController password;
+  late final TextEditingController username;
+
+  @override
+  void initState() {
+    email = TextEditingController();
+    password = TextEditingController();
+    username = TextEditingController();
+    super.initState();
+  }
+
+  Future<void> _handleRegister() async {
+    Map<String, String> userModel = {
+      "email": email.text.trim(),
+      "password": password.text.trim(),
+      "username": "username",
+    };
+    HttpService httpService = HttpService();
+
+    httpService.signUp(userModel);
+  }
+
+  @override
+  void dispose() {
+    email.dispose();
+    password.dispose();
+    username.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     width: 290,
                     height: 40,
                     child: TextField(
+                      controller: email,
                       decoration: InputDecoration(
                         hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
                         hintText: 'Write your email or login',
@@ -56,6 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     width: 290,
                     height: 40,
                     child: TextField(
+                      controller: password,
                       decoration: InputDecoration(
                         hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
                         hintText: 'Password',
@@ -112,7 +147,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/img_googleicon_1.svg'),
+                                      'assets/images/google_icon.png'),
                                 ),
                               ),
                             ),
@@ -134,17 +169,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Text('Login here!')
                     ]),
                   ),
-                  FilledButton(
+                  ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll<Color>(
                           Color(0xff53E88B),
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          AppRoutes.bioPageScreen,
-                          (_) => false,
-                        );
+                      onPressed: () async {
+                        Navigator.of(context)
+                            .pushNamed(AppRoutes.bioPageScreen);
+                        // _handleRegister();
+                        /*await launchUrl(Uri.parse(
+                            'http://10.0.2.2:8081/oauth2authorization/google'));
+                      */
                       },
                       child: Text('Register'))
                 ],

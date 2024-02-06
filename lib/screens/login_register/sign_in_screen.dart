@@ -83,7 +83,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/img_googleicon_1.svg'),
+                                      'assets/images/google_icon.png'),
                                 ),
                               ),
                             ),

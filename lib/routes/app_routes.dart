@@ -16,6 +16,7 @@ import 'package:mealmate/screens/onboarding_screens/onboarding_second_screen.dar
 import 'package:mealmate/screens/onboarding_screens/splash_screen.dart';
 import 'package:mealmate/screens/popular_diets_page.dart';
 import 'package:mealmate/screens/popular_meals_page.dart';
+import 'package:mealmate/widgets/notification_page.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -52,6 +53,8 @@ class AppRoutes {
 
   static const String navigationBottomBar = '/navigation_bottom_bar';
 
+  static const String notificationPage = '/notification_page';
+
   static Map<String, WidgetBuilder> routes = {
     splashScreen: (context) => SplashScreen(),
     signInScreen: (context) => SignInScreen(),
@@ -70,5 +73,6 @@ class AppRoutes {
     popularDietsPage: (context) => PopularDietsPage(),
     popularMealsPage: (context) => PopularMealsPage(),
     navigationBottomBar: (context) => NavigationBottomBar(),
+    notificationPage: (context) => NotificationPage(),
   };
 }

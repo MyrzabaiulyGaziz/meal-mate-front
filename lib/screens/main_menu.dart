@@ -37,7 +37,11 @@ class MainMenu extends StatelessWidget {
                           Icons.notifications,
                           size: 30,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(
+                            AppRoutes.notificationPage,
+                          );
+                        },
                       ),
                       padding: EdgeInsets.only(top: 40),
                     ),

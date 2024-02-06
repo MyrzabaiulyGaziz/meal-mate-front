@@ -53,9 +53,7 @@ class ProfilePage extends StatelessWidget {
               return CustomListTile(
                 leading: Container(
                   padding: EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                  ),
+                  decoration: BoxDecoration(),
                   child: Image.asset(
                     'assets/images/img_healthy_bowl_1.png',
                     fit: BoxFit.fill,

@@ -70,7 +70,10 @@ class UploadPhotoScreen extends StatelessWidget {
             SizedBox(height: 150),
             FilledButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.navigationBottomBar);
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  AppRoutes.navigationBottomBar,
+                  (_) => false,
+                );
               },
               child: Text('Next'),
               style: ButtonStyle(
