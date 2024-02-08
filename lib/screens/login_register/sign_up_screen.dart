@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mealmate/routes/app_routes.dart';
 import 'package:mealmate/services/http_service.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
