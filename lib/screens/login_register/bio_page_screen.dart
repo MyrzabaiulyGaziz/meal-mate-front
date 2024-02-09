@@ -124,7 +124,8 @@ class BioPageScreen extends StatelessWidget {
               SizedBox(height: 40),
               FilledButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(AppRoutes.uploadPhotoScreen);
+                  Navigator.of(context)
+                      .pushNamed(AppRoutes.navigationBottomBar);
                 },
                 child: Text(
                   'Next',

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mealmate/routes/app_routes.dart';
 import 'package:mealmate/screens/login_register/sign_in_screen.dart';
-import 'core/app_export.dart';
 
 var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
 void main() {

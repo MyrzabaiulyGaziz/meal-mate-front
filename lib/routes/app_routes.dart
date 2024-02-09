@@ -3,17 +3,12 @@ import 'package:mealmate/screens/diet_page.dart';
 import 'package:mealmate/screens/login_register/bio_page_screen.dart';
 import 'package:mealmate/screens/login_register/sign_in_screen.dart';
 import 'package:mealmate/screens/login_register/sign_up_screen.dart';
-import 'package:mealmate/screens/login_register/sign_up_success_screen.dart';
-import 'package:mealmate/screens/login_register/upload_photo_screen.dart';
-import 'package:mealmate/screens/login_register/verification_code_screen.dart';
-import 'package:mealmate/screens/login_register/verify_email_screen.dart';
 import 'package:mealmate/screens/main_menu.dart';
 import 'package:mealmate/screens/meal_page.dart';
 import 'package:mealmate/screens/meal_tracking/meal_tracking_page.dart';
 import 'package:mealmate/screens/navigation_bottom_bar.dart';
 import 'package:mealmate/screens/onboarding_screens/onboarding_first_screen.dart';
 import 'package:mealmate/screens/onboarding_screens/onboarding_second_screen.dart';
-import 'package:mealmate/screens/onboarding_screens/splash_screen.dart';
 import 'package:mealmate/screens/popular_diets_page.dart';
 import 'package:mealmate/screens/popular_meals_page.dart';
 import 'package:mealmate/widgets/notification_page.dart';
@@ -30,14 +25,6 @@ class AppRoutes {
   static const String signUpScreen = '/sign_up_screen';
 
   static const String bioPageScreen = '/bio_page_screen';
-
-  static const String uploadPhotoScreen = '/upload_photo_screen';
-
-  static const String signUpSuccessScreen = '/sign_up_success_screen';
-
-  static const String verificationCodeScreen = '/verification_code_screen';
-
-  static const String verifyEmailScreen = '/verify_email_screen';
 
   static const String mainMenu = '/main_menu';
 
@@ -56,16 +43,11 @@ class AppRoutes {
   static const String notificationPage = '/notification_page';
 
   static Map<String, WidgetBuilder> routes = {
-    splashScreen: (context) => SplashScreen(),
     signInScreen: (context) => SignInScreen(),
     onboardingFirstScreen: (context) => OnboardingFirstScreen(),
     onboardingSecondScreen: (context) => OnboardingSecondScreen(),
     signUpScreen: (context) => SignUpScreen(),
     bioPageScreen: (context) => BioPageScreen(),
-    uploadPhotoScreen: (context) => UploadPhotoScreen(),
-    signUpSuccessScreen: (context) => SignUpSuccessScreen(),
-    verificationCodeScreen: (context) => VerificationCodeScreen(),
-    verifyEmailScreen: (context) => VerifyEmailScreen(),
     mainMenu: (context) => MainMenu(),
     dietPage: (context) => DietPage(),
     mealPage: (context) => MealPage(),

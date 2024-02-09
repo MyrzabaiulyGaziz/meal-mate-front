@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mealmate/core/app_export.dart';
+import 'package:mealmate/routes/app_routes.dart';
 
 class OnboardingFirstScreen extends StatelessWidget {
   const OnboardingFirstScreen({Key? key}) : super(key: key);

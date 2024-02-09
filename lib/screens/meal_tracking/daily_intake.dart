@@ -36,7 +36,7 @@ class _DailyIntakeState extends State<DailyIntake>
       body: Column(
         children: [
           Container(
-            width: double.infinity,
+            width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.only(
               top: 40,
               left: 110,
