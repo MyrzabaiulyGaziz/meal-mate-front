@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mealmate/routes/app_routes.dart';
+import 'package:mealmate/services/dio_service.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -9,6 +10,35 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  late final TextEditingController email;
+  late final TextEditingController password;
+
+  @override
+  void initState() {
+    email = TextEditingController();
+    password = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    email.dispose();
+    password.dispose();
+    super.dispose();
+  }
+
+  Future<void> _handleLogin() async {
+    DioService dioService = DioService();
+    final res = await dioService.signIn(
+      email.text.trim(),
+      password.text.trim(),
+    );
+    if (res == 200) {
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          AppRoutes.navigationBottomBar, (route) => false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

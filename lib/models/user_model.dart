@@ -2,36 +2,32 @@
 import 'dart:convert';
 
 class UserModel {
+  final String? email;
   final String? name;
   final String? surname;
-  final int age;
-  final String? weight;
-  final String? height;
+  final String? token;
   UserModel({
-    required this.name,
-    required this.surname,
-    required this.age,
-    required this.weight,
-    required this.height,
+    this.email,
+    this.name,
+    this.surname,
+    this.token,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'email': email,
       'name': name,
       'surname': surname,
-      'age': age,
-      'weight': weight,
-      'height': height,
+      'token': token,
     };
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
+      email: map['email'] != null ? map['email'] as String : null,
       name: map['name'] != null ? map['name'] as String : null,
       surname: map['surname'] != null ? map['surname'] as String : null,
-      age: map['age'] as int,
-      weight: map['weight'] != null ? map['weight'] as String : null,
-      height: map['height'] != null ? map['height'] as String : null,
+      token: map['token'] != null ? map['token'] as String : null,
     );
   }
 

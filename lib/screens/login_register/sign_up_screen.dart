@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mealmate/routes/app_routes.dart';
-import 'package:mealmate/services/http_service.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:mealmate/services/dio_service.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -24,14 +23,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Future<void> _handleRegister() async {
-    Map<String, String> userModel = {
-      "email": email.text.trim(),
-      "password": password.text.trim(),
-      "username": "username",
-    };
-    HttpService httpService = HttpService();
-
-    httpService.signUp(userModel);
+    DioService dioService = DioService();
+    final res =
+        await dioService.signUp(email.text.trim(), password.text.trim());
+    if (res == 200) {
+      Navigator.of(context)
+          .pushNamedAndRemoveUntil(AppRoutes.bioPageScreen, (route) => false);
+    } else {
+      print('error');
+    }
   }
 
   @override
@@ -72,6 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     width: 290,
                     height: 40,
                     child: TextField(
+                      keyboardType: TextInputType.emailAddress,
                       controller: email,
                       decoration: InputDecoration(
                         hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
@@ -176,9 +177,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       onPressed: () async {
-                        Navigator.of(context)
-                            .pushNamed(AppRoutes.bioPageScreen);
-                        // _handleRegister();
+                        _handleRegister();
                         /*await launchUrl(Uri.parse(
                             'http://10.0.2.2:8081/oauth2authorization/google'));
                       */
