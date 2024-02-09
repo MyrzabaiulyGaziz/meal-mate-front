@@ -32,12 +32,65 @@ class MealTrackingPage extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 100,
-              child: Column(
-                children: [
-                  TextField(style: TextStyle()),
-                  TextField(),
-                ],
+              top: 150,
+              left: 35,
+              child: Container(
+                width: MediaQuery.of(context).size.width / 1.2,
+                height: 250,
+                decoration: BoxDecoration(),
+                child: Column(
+                  children: [
+                    TextField(
+                      style: TextStyle(),
+                      decoration: InputDecoration(
+                        hintText: ('Meal Name'),
+                      ),
+                    ),
+                    TextField(
+                      style: TextStyle(),
+                      decoration: InputDecoration(
+                        hintText: ('How many calories?'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              top: 300,
+              left: 35,
+              child: Container(
+                width: MediaQuery.of(context).size.width / 1.2,
+                height: 250,
+                decoration: BoxDecoration(),
+                child: Column(
+                  children: [
+                    TextField(
+                      style: TextStyle(),
+                      decoration: InputDecoration(
+                        hintText: ('Protein'),
+                      ),
+                    ),
+                    TextField(
+                      style: TextStyle(),
+                      decoration: InputDecoration(
+                        hintText: ('Carbs'),
+                      ),
+                    ),
+                    TextField(
+                      style: TextStyle(),
+                      decoration: InputDecoration(
+                        hintText: ('Fibre'),
+                      ),
+                    ),
+                    TextField(
+                      style: TextStyle(),
+                      decoration: InputDecoration(
+                        hintText: ('Fats'),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           ],
