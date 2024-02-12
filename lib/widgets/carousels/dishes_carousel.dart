@@ -1,8 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:mealmate/models/recipe_short.dart';
+import 'package:mealmate/screens/recipe/recipe_page.dart';
 
 class DishesCarousel extends StatelessWidget {
-  const DishesCarousel({Key? key}) : super(key: key);
+  const DishesCarousel({
+    Key? key,
+    required this.recipes,
+  }) : super(key: key);
+
+  final List<RecipeShort> recipes;
 
   @override
   Widget build(BuildContext context) {
@@ -11,39 +18,40 @@ class DishesCarousel extends StatelessWidget {
       child: CarouselSlider(
         options: CarouselOptions(
           autoPlay: true,
-          aspectRatio: 1,
           enlargeCenterPage: true,
         ),
-        items: imageSliders,
+        items: recipes
+            .map(
+              (recipe) => SizedBox(
+                width: double.infinity,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(10),
+                  onTap: () => RecipePage.open(
+                    context,
+                    id: recipe.id,
+                  ),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(recipe.image),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          recipe.title,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
+            .toList(),
       ),
     );
   }
 }
-
-final List<Image> imgList = [
-  Image.asset('assets/images/vegan_diet.png'),
-  Image.asset('assets/images/student_diet.png'),
-  Image.asset('assets/images/low_carb_diet.png'),
-  Image.asset('assets/images/atkins_diet.png'),
-  Image.asset('assets/images/keto_diet.png'),
-  Image.asset('assets/images/fasting_diet.png'),
-];
-
-final List<Widget> imageSliders = imgList
-    .map((item) => Container(
-          child: Container(
-            margin: EdgeInsets.all(1.0),
-            child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(0)),
-                child: Stack(
-                  children: <Widget>[
-                    item,
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text('data'),
-                  ],
-                )),
-          ),
-        ))
-    .toList();

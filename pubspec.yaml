@@ -1,8 +1,10 @@
 name: mealmate
 description: Diploma project.
 version: 1.0.0+1
+
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
+
 dependencies:
   flutter:
     sdk: flutter
@@ -16,15 +18,24 @@ dependencies:
   dio: ^5.4.0
   google_sign_in: ^6.2.1
   url_launcher: ^6.2.4
+  freezed_annotation: ^2.4.1
+  dartz: ^0.10.1
+  flutter_bloc: ^8.1.3
+
 dev_dependencies:
+  json_serializable: ^6.7.1
+  build_runner: ^2.4.8
   flutter_test:
     sdk: flutter
+  freezed: ^2.4.7
+
 flutter:
   uses-material-design: true
 
   assets:
     - assets/
     - assets/images/
+    - assets/images/diets/
 
   fonts:
     - family: Abhaya Libre

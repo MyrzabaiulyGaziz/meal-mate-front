@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mealmate/core/cubit/app_cubit.dart';
 import 'package:mealmate/routes/app_routes.dart';
-import 'package:mealmate/services/dio_service.dart';
+import 'package:mealmate/services/auth_service.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -14,6 +16,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late final TextEditingController password;
   late final TextEditingController username;
 
+  bool loading = false;
+
   @override
   void initState() {
     email = TextEditingController();
@@ -23,15 +27,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Future<void> _handleRegister() async {
-    DioService dioService = DioService();
-    final res =
-        await dioService.signUp(email.text.trim(), password.text.trim());
-    if (res == 200) {
-      Navigator.of(context)
-          .pushNamedAndRemoveUntil(AppRoutes.bioPageScreen, (route) => false);
-    } else {
-      print('error');
-    }
+    if (email.text.isEmpty || password.text.isEmpty) return;
+
+    setState(() {
+      loading = true;
+    });
+
+    final result =
+        await AuthService.signUp(email.text.trim(), password.text.trim());
+    result.fold(
+      (l) {
+        setState(() {
+          loading = false;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l)));
+      },
+      (_) {
+        context.read<AppCubit>().getUser();
+        final navigator = Navigator.of(context);
+        navigator.pushReplacementNamed(AppRoutes.navigationBottomBar);
+        navigator.pushNamed(AppRoutes.bioPageScreen);
+
+      },
+    );
   }
 
   @override
@@ -104,35 +122,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
-                  Container(
-                    width: 290,
-                    height: 40,
-                    child: Stack(children: [
-                      TextField(
-                        decoration: InputDecoration(
-                          hintStyle:
-                              TextStyle(color: Colors.grey, fontSize: 16),
-                          hintText: 'Verify password',
-                          fillColor: Colors.black,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(14),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        child: IconButton(
-                            onPressed: () {
-                              setState(() {});
-                            },
-                            icon: Icon(Icons.visibility_outlined)),
-                        top: -3,
-                        right: 0,
-                      )
-                    ]),
-                  ),
+                  // SizedBox(height: 20),
+                  // Container(
+                  //   width: 290,
+                  //   height: 40,
+                  //   child: Stack(children: [
+                  //     TextField(
+                  //       decoration: InputDecoration(
+                  //         hintStyle:
+                  //             TextStyle(color: Colors.grey, fontSize: 16),
+                  //         hintText: 'Verify password',
+                  //         fillColor: Colors.black,
+                  //         border: OutlineInputBorder(
+                  //           borderRadius: BorderRadius.all(
+                  //             Radius.circular(14),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     Positioned(
+                  //       child: IconButton(
+                  //           onPressed: () {
+                  //             setState(() {});
+                  //           },
+                  //           icon: Icon(Icons.visibility_outlined)),
+                  //       top: -3,
+                  //       right: 0,
+                  //     )
+                  //   ]),
+                  // ),
                   SizedBox(height: 30),
                   Column(children: [
                     Container(
@@ -182,7 +200,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             'http://10.0.2.2:8081/oauth2authorization/google'));
                       */
                       },
-                      child: Text('Register'))
+                      child: loading
+                          ? CircularProgressIndicator()
+                          : Text('Register'))
                 ],
               ),
             ],

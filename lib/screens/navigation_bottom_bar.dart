@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mealmate/screens/main_menu.dart';
 import 'package:mealmate/screens/meal_tracking/daily_intake.dart';
-import 'package:mealmate/screens/profile_page.dart';
+import 'package:mealmate/screens/profile/profile_page.dart';
 
 class NavigationBottomBar extends StatefulWidget {
   const NavigationBottomBar({Key? key}) : super(key: key);

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mealmate/core/cubit/app_cubit.dart';
 import 'package:mealmate/routes/app_routes.dart';
-import 'package:mealmate/services/dio_service.dart';
+import 'package:mealmate/services/auth_service.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -27,16 +29,24 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 
+  bool loading = false;
+
   Future<void> _handleLogin() async {
-    DioService dioService = DioService();
-    final res = await dioService.signIn(
-      email.text.trim(),
-      password.text.trim(),
+    final result =
+        await AuthService.signIn(email.text.trim(), password.text.trim());
+    result.fold(
+      (l) {
+        setState(() {
+          loading = false;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l)));
+      },
+      (_) {
+        context.read<AppCubit>().getUser();
+        final navigator = Navigator.of(context);
+        navigator.pushReplacementNamed(AppRoutes.navigationBottomBar);
+      },
     );
-    if (res == 200) {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-          AppRoutes.navigationBottomBar, (route) => false);
-    }
   }
 
   @override
@@ -69,6 +79,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     width: 290,
                     height: 40,
                     child: TextField(
+                      controller: email,
                       decoration: InputDecoration(
                         hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
                         hintText: 'Write your email or login',
@@ -86,6 +97,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     width: 290,
                     height: 40,
                     child: TextField(
+                      controller: password,
                       decoration: InputDecoration(
                         hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
                         hintText: 'Password',
@@ -141,13 +153,9 @@ class _SignInScreenState extends State<SignInScreen> {
                           Color(0xff53E88B),
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          AppRoutes.navigationBottomBar,
-                          (_) => false,
-                        );
-                      },
-                      child: Text('Login'))
+                      onPressed: _handleLogin,
+                      child:
+                          loading ? CircularProgressIndicator() : Text('Login'))
                 ],
               ),
             ],

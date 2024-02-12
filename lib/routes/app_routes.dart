@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mealmate/screens/diet_page.dart';
 import 'package:mealmate/screens/login_register/bio_page_screen.dart';
 import 'package:mealmate/screens/login_register/sign_in_screen.dart';
 import 'package:mealmate/screens/login_register/sign_up_screen.dart';
 import 'package:mealmate/screens/main_menu.dart';
-import 'package:mealmate/screens/meal_page.dart';
 import 'package:mealmate/screens/meal_tracking/meal_tracking_page.dart';
 import 'package:mealmate/screens/navigation_bottom_bar.dart';
 import 'package:mealmate/screens/onboarding_screens/onboarding_first_screen.dart';
 import 'package:mealmate/screens/onboarding_screens/onboarding_second_screen.dart';
-import 'package:mealmate/screens/popular_diets_page.dart';
-import 'package:mealmate/screens/popular_meals_page.dart';
+import 'package:mealmate/screens/search/search_page.dart';
 import 'package:mealmate/widgets/notification_page.dart';
 
 class AppRoutes {
@@ -42,6 +39,8 @@ class AppRoutes {
 
   static const String notificationPage = '/notification_page';
 
+  static const String searchPage = '/searchPage';
+
   static Map<String, WidgetBuilder> routes = {
     signInScreen: (context) => SignInScreen(),
     onboardingFirstScreen: (context) => OnboardingFirstScreen(),
@@ -49,12 +48,9 @@ class AppRoutes {
     signUpScreen: (context) => SignUpScreen(),
     bioPageScreen: (context) => BioPageScreen(),
     mainMenu: (context) => MainMenu(),
-    dietPage: (context) => DietPage(),
-    mealPage: (context) => MealPage(),
     mealTrackingPage: (context) => MealTrackingPage(),
-    popularDietsPage: (context) => PopularDietsPage(),
-    popularMealsPage: (context) => PopularMealsPage(),
     navigationBottomBar: (context) => NavigationBottomBar(),
     notificationPage: (context) => NotificationPage(),
+    searchPage: (context) => SearchPage(),
   };
 }
