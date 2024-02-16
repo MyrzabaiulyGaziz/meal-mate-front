@@ -93,7 +93,7 @@ class _MainMenuState extends State<MainMenu> {
                     ),
                     Positioned(
                       top: 90,
-                      right: 84,
+                      right: 45,
                       child: Container(
                         alignment: Alignment.center,
                         width: 102,

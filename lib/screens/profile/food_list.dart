@@ -34,18 +34,22 @@ class _FoodListState extends State<FoodList> {
   Widget build(BuildContext context) {
     final foods = this.foods;
     if (foods == null)
-      return SliverFillRemaining(
-        child: Center(
-          child: CircularProgressIndicator(),
+      return CustomScrollView(slivers: [
+        SliverFillRemaining(
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
         ),
-      );
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          return FoodTile.full(foodFull: foods[index]);
-        },
-        childCount: foods.length,
+      ]);
+    return CustomScrollView(slivers: [
+      SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) {
+            return FoodTile.full(foodFull: foods[index]);
+          },
+          childCount: foods.length,
+        ),
       ),
-    );
+    ]);
   }
 }

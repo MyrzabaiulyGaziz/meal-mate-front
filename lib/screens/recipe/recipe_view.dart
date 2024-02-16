@@ -90,9 +90,12 @@ class _RecipeViewState extends State<RecipeView> {
         fit: StackFit.passthrough,
         children: [
           SliverCard(
-            image: Image.network(
-              recipe.image,
-              fit: BoxFit.cover,
+            image: Hero(
+              tag: 'tile${widget.id}',
+              child: Image.network(
+                recipe.image,
+                fit: BoxFit.cover,
+              ),
             ),
             title: recipe.title,
             sliver: SliverList(

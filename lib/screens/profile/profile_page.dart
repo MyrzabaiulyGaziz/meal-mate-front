@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mealmate/core/cubit/app_cubit.dart';
 import 'package:mealmate/core/cubit/app_state.dart';
 import 'package:mealmate/models/user.dart';
-import 'package:mealmate/screens/profile/food_list.dart';
 import 'package:mealmate/widgets/sliver_card.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -25,7 +24,9 @@ class ProfilePage extends StatelessWidget {
               fit: BoxFit.fill,
             ),
             title: user.fullName,
-            sliver: FoodList(),
+            sliver: SliverToBoxAdapter(
+              child: Text('Favorites'),
+            ),
           );
         },
       ),

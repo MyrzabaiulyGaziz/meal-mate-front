@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:mealmate/core/config/dio_config.dart';
+import 'package:mealmate/models/ingredient_nutrition.dart';
 import 'package:mealmate/models/pageable.dart';
 import 'package:mealmate/models/recipe.dart';
 import 'package:mealmate/models/nutrition.dart';

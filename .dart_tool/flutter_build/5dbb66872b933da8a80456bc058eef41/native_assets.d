@@ -1,0 +1,1 @@
+ C:\\Users\\gaziz\\flutter_apps\\meal_mate_front\\.dart_tool\\flutter_build\\5dbb66872b933da8a80456bc058eef41\\native_assets.yaml: 
